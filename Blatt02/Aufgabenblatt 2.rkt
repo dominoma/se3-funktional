@@ -26,11 +26,13 @@
 14. 'wuff
 |#
 
+;; Die Fakultät von n für n >=0
 (define (fak n)
   (if (eqv? n 0) 1
       (* n (fak (- n 1))))
   )
 
+;; Gibt r^n zurück für n>=0
 (define (power r n)
   (if (eqv? n 0) 1
       (if (even? n) (sqr (power r (/ n 2)))
@@ -43,8 +45,21 @@
         (+ b (euRec nf (+ n 1))))
     ))
 
+;;Gibt die eulersche Zahl * 1E100 zurück
 (define (euler)( * (+ 1 (euRec 1 1)) 1E100))
 
+;;Helper funktion zur Reihengenerierung von Pi. z ist momentane Nenner, v das Vorzeichen in der Reihe. 
+(define (gen-Pi-helper z v)
+  (if (> z 1E4)
+       0
+       (+ (* (/ 1 z) v) (gen-Pi-helper (+ z 2) (* v -1)))
+  )
+)
+
+;;Generiert pi 
+(define (gen-pi) (* (gen-Pi-helper 1 1) 4))
+
+;;Gibt die type? Funktion die für den Übergebenen Wert true ist zurück, z.B. #t->boolean?
 (define (type-of input)
   (cond 
          ((boolean? input) boolean?)
