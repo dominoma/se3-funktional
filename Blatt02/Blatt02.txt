@@ -1,0 +1,16 @@
+> (type-of '())
+#<procedure:list?>
+> (define (id z) z)
+> (type-of (id "SE-3"))
+#<procedure:string?>
+> (type-of "SE-3")
+#<procedure:string?>
+> (type-of (string-ref "FP" 1))
+#<procedure:char?>
+> (type-of (lambda (x) x))
+#<procedure:procedure?>
+> (type-of type-of)
+#<procedure:procedure?>
+> (type-of (type-of type-of))
+#<procedure:procedure?>
+> 
