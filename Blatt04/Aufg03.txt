@@ -1,0 +1,8 @@
+Äußere: Funktion wird von außen beginnend evaluiert. Hier würde das zu mehrfachberechnungen führen. 
+Innere: Funktionsargumente werden vor Funktion evaluiert.
+
+Racket: Normale funktionen: Innere/Eager
+	Special-form: Nicht strikt/ Äußere
+
+Ohne Special form werden immer erst beide cases ausgewertet, so wird hier die abbruchbedingung nicht wirklich erreicht, es wird unendlich gerechnet.
+
