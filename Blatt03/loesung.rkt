@@ -14,11 +14,22 @@
   )
 
 ;Eine Liste der Buchstaben A bis Z + 1 bis 9 und , und . 
-(define buchstaben (string->list "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789,."))
+(define buchstaben (string->list "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,."))
 
 ;Liste der Strings des Natoalphabets
 (define natobuchstaben
-  '("Alfa" "Bravo" "Charlie" "Delta" "Echo" "Foxtrot" "Golf" "Hotel" "India" "Juliett" "Kilo" "Lima" "Mike" "November" "Oscar" "Papa" "Quebec" "Romeo" "Sierra" "Tango" "Uniform" "Victor" "Whiskey" "X-ray" "Yankee" "Zulu"
+  '("Alfa" "Bravo" "Charlie" "Delta" "Echo" "Foxtrot" "Golf" "Hotel" "India" "Juliett" "Kilo" "Lima" "Mike" "November" "Oscar" "Papa" "Quebec" "Romeo" "Sierra" "Tango" "Uniform" "Victor" "Whiskey" "X-ray" "Yankee" "Zulu" "Nadazero"
+ "Unaone"
+ "Bissotwo"
+ "Terrathree"
+ "Kartefour"
+ "Pantafive"
+ "Soxisix"
+ "Setteseven"
+ "Oktoeight"
+ "Novenine"
+ "Decimal"
+ "Stop"
            )
   )
 
