@@ -1,0 +1,10 @@
+Funktion die aus zwei eltern ein Kind generiert
+
+Hilfsfunktionen eine Pro Eigenschaft, als eingabe zwei eigenschaften, als Ausgabe ein nach dominat/rezesiv geordnetes Paar der beiden. 
+
+Funktion die aus zwei Eltern und einer Kinderzahl n n Kinder generiert und diese als Liste ausgibt
+
+Funktion die Liste von SChmeterlingen ausgiebt
+
+Datenstruktur:
+	Schmetterling ist ein Paar mit einer Liste der dominanten Eigenschaften und einer Liste mit den rezessiven Eigenschaften.
