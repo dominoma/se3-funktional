@@ -1,9 +1,6 @@
 #lang racket
 (require se3-bib/butterfly-module)
 
-#|schmetterling: '(dominant '(farbe musterung fühlerform flügelform)
-                   rezessiv '(farbe musterung fühlerform flügelform))|#
-
 ;; Dominanzregeln, vordere Einträge dominieren hintere
 (define dominanz-musterung '(star dots stripes))
 (define dominanz-farbe '(red green blue yellow))
@@ -21,17 +18,12 @@
       )
   )
 
-;;Wandelt einen Schmetterling in eine Liste von (dominant . rezessiv) Paaren
-;;Seiner Gene um
-(define (schmetterling->listofgenpairs schmett)
-  (map cons (car schmett) (cdr schmett))
+;;Ein Schmetterling ist eine Liste von (dominant . rezessiv Genpaaren
+;;Kann hier erstellt werden indem ein Paar von einer Liste der dominanten und einer Liste der rezessiven Gene übergeben wird
+(define (schmetterling paar)
+  (map cons (car paar) (cdr paar))
 )
 
-;;Wandelt eine Liste von (dominant . rezessiv) Paaren in einen
-;;Schmetterling um
-(define (listofgenpairs->schmetterling listofgenpairs)
-  (cons (map car listofgenpairs) (list (map cdr listofgenpairs)))
-  )
                                                        
 ;;Wählt von einem Gen-Paar zufällig eines aus
 (define (rand-gen 2-gene)
@@ -54,7 +46,7 @@
 #|(liebe-machen '((red . yellow) (star . dots) (straight  . curly) (hexagon  . rhomb )) '((blue . green) (stripes . star) (curved . straight) (ellipse . hexagon )))|#
 
 (define (malSchmetterling schmetterling)
-(let ((sichtbar (car (listofgenpairs->pairofgenlist schmetterling))))
+(let ((sichtbar (map car schmetterling)))
   (show-butterfly (car sichtbar) (cadr sichtbar) (caddr sichtbar) (cadddr sichtbar))
 ))
-#|'((red . yellow) (star . dots) (straight  . curly) (hexagon  . rhomb ))|#
+;;'((red . yellow) (star . dots) (straight  . curly) (hexagon  . rhomb ))
