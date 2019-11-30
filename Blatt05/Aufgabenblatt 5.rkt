@@ -43,10 +43,16 @@
    ]
  )
 
-#|(liebe-machen '((red . yellow) (star . dots) (straight  . curly) (hexagon  . rhomb )) '((blue . green) (stripes . star) (curved . straight) (ellipse . hexagon )))|#
+;;(liebe-machen '((red . yellow) (star . dots) (straight  . curly) (hexagon  . rhomb )) '((blue . green) (stripes . star) (curved . straight) (ellipse . hexagon )))
 
 (define (malSchmetterling schmetterling)
 (let ((sichtbar (map car schmetterling)))
   (show-butterfly (car sichtbar) (cadr sichtbar) (caddr sichtbar) (cadddr sichtbar))
 ))
 ;;'((red . yellow) (star . dots) (straight  . curly) (hexagon  . rhomb ))
+
+;;Ausgabe: Mutter Vater <n-kinder>
+(define (n-kinder-machen n vater mutter)
+(map malSchmetterling
+     (append (list mutter vater) (build-list n (lambda (n)(liebe-machen vater mutter)))))
+  )
