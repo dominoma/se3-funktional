@@ -10,6 +10,11 @@
    liste)
   )
 
-(define (summe>6 xs)
-  (foldl + 0 (filter (lambda (x) (and ()))))
+(define (summeG6 xs)
+  (foldl
+   +
+   0
+   (filter (lambda (x)
+             (and (> x 6) (even? x))) xs)
+   )
   )
