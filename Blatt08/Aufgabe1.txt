@@ -1,0 +1,23 @@
+1:Wenn eine Funktion zurückgegeben oder als Parameter übergeben wird. 
+
+2:
+a) #t , x wird als FUnktion verwendet
+b) #f, Argumente müssen listen sein, Rückgabe wert das Produkt
+c) #f, + ist nicht auf funktionen definiert -> x und y müssen Zahlen sein, als Rückgabe Summe
+d) #t, Rückgabewert sind vergleichsoperationen
+e) #t, f ist Funktion
+
+3:
+Die Funktion List und die 4 als zweites Argument sind in der Closure gebunden
+
+4:
+1 + (2 +3) + (3+ 3) + (5+3) = 20
+
+Für jedes Listenelement Wahrheitswert ob grade '(#t #f #t #f ...
+
+Liste mit den Zahlen der Liste -> '(3 4 -7)
+
+Alle Zahlen, bei denen ermittle vergleichoperator 11 Zahl größer zurück gibt, da dieser Vergleichsoperator > ist, was den Filter test-vergleich erfüllt.
+-> '(-45 -6)
+
+ 
