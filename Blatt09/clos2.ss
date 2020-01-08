@@ -2,10 +2,16 @@
 (require swindle/setf swindle/misc )
 
 (defclass tier ()
-   ((geschwindigkeit
-    :initform 10)
+   (geschwindigkeit
+    :initvalue 10
+    :initarg :Igeschwindigkeit
+    :reader get_geschwindigkeit
+    :writer set_geschwindigkeit)
   (gefährlichkeit
-   :initform 1))
+   :initvalue 1
+    :initarg :Igefährlichkeit
+    :reader get_gefährlichkeit
+    :writer set_getGefährlichkeit)
   )
 
 (defclass landtier (tier)
@@ -17,7 +23,8 @@
   )
 
 (defclass flugtier (tier)
-
+(geschwindigkeit
+    :initvalue 100)
   )
 
 (defclass arboreal (landtier)
@@ -73,6 +80,23 @@
 
   )
 
-(defmethod getMaximalgeschwindigkeit (ti tier)
-  (geschwindigkeit ti)
+(defmethod getMaximalgeschwindigkeit ((ti tier))
+  (get_geschwindigkeit ti)
+  )
+
+(defmethod getGefährlichkeit((ti tier))
+  (
+   (get_gefährlichkeit ti)
+   )
+  )
+
+
+;;Flugtiere sind immer gefährlich, ihnen kann man nicht trauen
+(defmethod getGefährlichkeit ((ti flugtier))
+  5
+  )
+
+;;Magische Fische sind immer ungefährlich
+(defmethod getGefährlichkeit((magieTier fantasieFisch))
+   0
   )
