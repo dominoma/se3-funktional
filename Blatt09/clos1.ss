@@ -1,6 +1,7 @@
 #lang swindle
 (require swindle/setf
-swindle/misc)
+swindle/misc
+racket/string)
 
 (defclass Video ()
 (schluessel
@@ -31,7 +32,7 @@ swindle/misc)
  :initarg :altersfreigabe
  :accessor alterfreigabe))
 
-(defclass Serie (Video)
+(defclass Serie (Film)
 (plattform
  :initarg :plattform
  :accessor plattform)
@@ -51,3 +52,43 @@ swindle/misc)
  :initarg :monat
  :accessor monat))
 
+;;TODO alle Angaben einfügen
+(define (makeMulan)
+   (make Film :ersteller 'Chris_Bender' :produktion 'Walt_Disney_Pictures :genre 'abenteuer)
+  )
+
+;;TODO alle Angaben einfügen
+(define (makeGroßePause)
+  (make Serie :ersteller  'Paul_Germain_Joe_Ansolabehere :produktion 'Walt_Disney_Television_Animation)
+  )
+
+;;TODO alle Angaben einfügen
+(define (makeYtVideo)
+  (make YTVideo)
+  )
+
+;;;;;;1.2
+;;generic-append-combination sorgt dafür, dass beim citen die spezifischeren Informationen denen der Übergeordneten Klasse hinzugefügt werden
+(defgeneric cite ((v Video))
+  :combination generic-append-combination
+  )
+
+;;TODO alle Argumente in citelist einfügen 
+(defmethod cite ((v Video))
+  (list (produktion v)(ersteller v))
+  )
+
+;;TODO alle Argumente in citelist einfügen 
+(defmethod cite ((f Film))
+    (list )
+  )
+
+;;TODO alle Argumente in citelist einfügen 
+(defmethod cite ((s Serie))
+    (list )
+  )
+
+;;TODO alle Argumente in citelist einfügen 
+(defmethod cite ((y YTVideo))
+    (list )
+  )
