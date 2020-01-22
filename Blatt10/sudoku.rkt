@@ -96,3 +96,90 @@
     (+(*(quotient zeile 3) 3) (quotient spalte 3))
     )
   )
+
+;;Indexe in denen die Zahl gesetzt werden kann
+(define (eindeutige-positions spiel zahl)
+  (let ((xedSpielfeld (markiere-ausschluss spiel zahl)))
+    (filter (curry eindeutigesFeld xedSpielfeld)  (range 81))
+    )
+  )
+ 
+(define (eindeutigesFeld spiel index)
+ (and
+   (eq? 0 (vector-ref spiel index))
+  (or
+   (1nullInIndizes spiel (zeile->indizes (quotient index 9)))
+   (1nullInIndizes spiel (spalte->indizes (modulo index 9)))
+   (1nullInIndizes spiel (quadrant->indizes(index->quadrant index)))))
+  )
+
+;;Ob an den übergebenen indexen insgesamt genau eine 0 ist
+(define (1nullInIndizes xedSpiel indexe)
+  (= 1 (length(filter (curry eq? 0 )(spiel->eintraege xedSpiel indexe))))
+  )
+
+(define (loeseSpiel spiel)
+  (let ((nextStep (loeseSpielStep spiel)))
+    (if(equal? spiel nextStep)
+       nextStep
+       (loeseSpiel nextStep)
+       ))
+ )
+
+(define (loeseSpielStep spiel)
+(let* (
+       (vecCopy (vector-copy spiel))
+       (trash (map
+   (lambda (pair) (vector-set! vecCopy (cdr pair) (car pair)))
+   (apply append
+          (map (curry ZahlKandidatenPaar spiel) (range 1 10))))  ))
+    vecCopy
+    )
+  )
+
+(define (ZahlKandidatenPaar spiel zahl)
+  (map (curry cons zahl)  (eindeutige-positions spiel zahl))
+  )
+
+;;Aufg 1.3
+(require 2htdp/image)
+
+( define (cell spiel x y)
+    (let ((wert (vector-ref spiel (xy->index x y))))
+      (if(= wert 0 )
+       (square 20 "outline" "black")
+       (overlay (square 20 "outline" "black")
+                (text (number->string wert) 15 "black")
+       )
+      )
+   )
+   )
+   
+
+(define (build_map_x spiel x y)
+  (if (< x 9)
+      (beside/align "top"
+                    (cell spiel x y)
+                    (build_map_x spiel (+ x 1) y)
+                    )
+      (square 0 "outline" "black")
+      )
+  )
+(define (build_map_y spiel x y)
+  (if (< y 9)
+      (above/align "left"
+                   (build_map_x spiel 0 y)
+                   (build_map_y spiel x (+ y 1))
+                   )
+      (square 0 "outline" "black")
+      )
+  )
+
+
+(define (build_map spiel x y)
+  (build_map_y spiel x y)
+  )
+
+(define (draw_map spiel)
+  (build_map_y spiel 0 0)
+  )
