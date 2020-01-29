@@ -2,11 +2,12 @@
 (require se3-bib/prolog/prologInScheme)
 #|
 1.1
-a) geht nicht
-b) ?A = 3 + 2
-c) ?A = 3 + 2
-d) ?A = 3 + 2
-e) ?X = 1, ?B = 2, ?Rest = (?B ?X)
+a) geht nicht ;;Fabian: Geht, sind glaub ich zwei verschiedene Abfragen, (A . 1) (D . 3) B ungebunden
+	a.2) (B . 4)
+b) ?A = 3+2
+c) ?A = 3 + 2 ;;Fabian: Geht glaub ich nicht
+d) ?A = (3 + 2)
+e) ?X = 1, ?B = 2, ?Rest = (?B ?X) ;;Fabian: Geht glaub ich nicht
 f) ?X = 1, ?B = 2, ?Y = 1, ?Rest = (?B 1)
 g) 
 |#
